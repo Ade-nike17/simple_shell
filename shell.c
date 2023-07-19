@@ -9,17 +9,49 @@
  * Return: 0 for success always
  */
 
-int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
+int main(__attribute__((unused))int argc, char **argv)
 {
-	/* make void parameters in main */
-	char *lineptr;
+	char *lineptr = NULL;
 	size_t n = 0;
+	ssize_t line_read;
+	pid_t pid;
+	int status;
 
-	printf("$ ");
-	getline(&lineptr, &n, stdin);
+	/* set function in an infinite loop */
+	while (1)
+	{
+		printf("$ ");
+		line_read = getline(&lineptr, &n, stdin);
+		/*  condition for EOF or Ctrl + D */
+		if (line_read == -1)
+			break;
 
-	printf("%s", lineptr);
+		/* remove new line at the end */
+		lineptr[line_read - 1] = '\0';
 
+		/* fork child process */
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork");
+			return (1);
+		}
+		else if (pid == 0)
+		{
+			/* child process exec cmd */
+			if (execve(lineptr, argv, environ) == -1)
+			{
+				perror("execve");
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			/* parent process wait for child process */
+			wait(&status);
+		}
+	}
+	/* free up the allocated mem */
 	free(lineptr);
 	return (0);
 }
