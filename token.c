@@ -30,3 +30,34 @@ char **split_input_line(char *lineptr, const char *delim)
 	free(lineptr_cp);
 	return (tokens);
 }
+
+
+
+
+
+char **get_input_tokens()
+{
+	char *lineptr = NULL;
+	size_t n = 0;
+	ssize_t line_read;
+	char **tokens;
+
+	printf("$ ");
+	line_read = getline(&lineptr, &n, stdin);
+	/*  condition for EOF or Ctrl + D */
+	if (line_read == -1)
+	{
+		free(lineptr);
+		return (NULL);
+	}
+
+	/* remove new line at the end */
+	lineptr[line_read - 1] = '\0';
+
+	/* split the input line into tokens*/
+	tokens = split_input_line(lineptr, " ");
+	free(lineptr);
+
+	return (tokens);
+}
+
