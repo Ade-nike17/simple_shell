@@ -48,3 +48,20 @@ char *strcat(char *dest, const char *src)
 	return (dest);
 }
 
+
+int strcmp(const char *str1, const char *str2)
+{
+	unsigned char char1, char2;
+
+	while (*str1 && *str1 == *str2)
+	{
+		str1++;
+		str2++;
+	}
+
+	char1 = *(unsigned char *)str1;
+	char2 = *(unsigned char *)str2;
+
+
+	return (char1 - char2);
+}
