@@ -15,5 +15,6 @@ char **split_input_line(char *lineptr, const char *delim);
 char **get_input_tokens();
 void execmd(char **tokens);
 char *find_path(char *cmd);
+size_t strlen(const char *str);
 
 #endif /* SHELL_H */
