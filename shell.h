@@ -16,5 +16,10 @@ char **get_input_tokens();
 void execmd(char **tokens);
 char *find_path(char *cmd);
 size_t strlen(const char *str);
+char *strcpy(char *dest, const char *src);
+char *strcat(char *dest, const char *src);
+int strcmp(const char *str1, const char *str2);
+
+
 
 #endif /* SHELL_H */
