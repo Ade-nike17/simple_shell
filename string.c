@@ -98,3 +98,35 @@ int _strcmp(const char *str1, const char *str2)
 
 	return (char1 - char2);
 }
+
+/**
+ * _strdup - Duplicates a null terminated string.
+ *
+ * @str: Pointer to the null-terminated string to duplicate.
+ *
+ * Return: Pointer to the newly allocated memory containing the duplicated string
+ */
+char *_strdup(const char *str)
+{
+	size_t length, i;
+	char *duplicate;
+
+	if (str == NULL)
+		return (NULL);
+
+	length = 0;
+
+	while (str[length] != '\0')
+		length++;
+
+	duplicate = (char *)malloc((length + 1) * sizeof(char));
+
+
+	if (duplicate != NULL)
+	{
+		for (i = 0; i <= length; i++)
+			duplicate[i] = str[i];
+	}
+
+	return (duplicate);
+}
