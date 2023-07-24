@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * _strlen - Calculates the length of a null-terminated string.
+ *
+ * @str: Pointer to the null-terminated input string.
+ *
+ * Return: The length of the input string (excluding the null terminator).
+ */
 
 size_t _strlen(const char *str)
 {
@@ -13,6 +20,16 @@ size_t _strlen(const char *str)
 
 	return (length);
 }
+
+
+/**
+ * _strcpy - Copies a null-terminated string from the source to the destination.
+ *
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the null-terminated source string.
+ *
+ * Return: A pointer to the destination buffer.
+ */
 
 char *_strcpy(char *dest, const char *src)
 {
@@ -32,6 +49,14 @@ char *_strcpy(char *dest, const char *src)
 }
 
 
+/**
+ * _strcat - Concatenates a null-terminated string to the end of another string.
+ *
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the null-terminated source string.
+ * Return: A pointer to the destination buffer, now containing the concatenated result.
+ */
+
 char *_strcat(char *dest, const char *src)
 {
 	char *ptr = dest + strlen(dest);
@@ -48,6 +73,14 @@ char *_strcat(char *dest, const char *src)
 	return (dest);
 }
 
+
+/**
+ * _strcmp - Compares two null-terminated strings lexicographically.
+ *
+ * @str1: Pointer to the first null-terminated string.
+ * @str2: Pointer to the second null-terminated string.
+ * Return: An integer
+ */
 
 int _strcmp(const char *str1, const char *str2)
 {
