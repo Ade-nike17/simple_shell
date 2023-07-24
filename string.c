@@ -1,7 +1,7 @@
 #include "shell.h"
 
 
-size_t strlen(const char *str)
+size_t _strlen(const char *str)
 {
 
 	size_t length = 0;
@@ -14,7 +14,7 @@ size_t strlen(const char *str)
 	return (length);
 }
 
-char *strcpy(char *dest, const char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	char *ptr = dest;
 
@@ -32,7 +32,7 @@ char *strcpy(char *dest, const char *src)
 }
 
 
-char *strcat(char *dest, const char *src)
+char *_strcat(char *dest, const char *src)
 {
 	char *ptr = dest + strlen(dest);
 
@@ -49,7 +49,7 @@ char *strcat(char *dest, const char *src)
 }
 
 
-int strcmp(const char *str1, const char *str2)
+int _strcmp(const char *str1, const char *str2)
 {
 	unsigned char char1, char2;
 
