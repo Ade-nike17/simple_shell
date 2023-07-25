@@ -1,7 +1,14 @@
 #include "shell.h"
 
+/**
+ * _strlen - Calculates the length of a null-terminated string.
+ *
+ * @str: Pointer to the null-terminated input string.
+ *
+ * Return: The length of the input string (excluding the null terminator).
+ */
 
-size_t strlen(const char *str)
+size_t _strlen(const char *str)
 {
 
 	size_t length = 0;
@@ -14,7 +21,17 @@ size_t strlen(const char *str)
 	return (length);
 }
 
-char *strcpy(char *dest, const char *src)
+
+/**
+ * _strcpy - Copies a null-terminated string from the source to the destination.
+ *
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the null-terminated source string.
+ *
+ * Return: A pointer to the destination buffer.
+ */
+
+char *_strcpy(char *dest, const char *src)
 {
 	char *ptr = dest;
 
@@ -32,7 +49,15 @@ char *strcpy(char *dest, const char *src)
 }
 
 
-char *strcat(char *dest, const char *src)
+/**
+ * _strcat - Concatenates a null-terminated string to the end of another string.
+ *
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the null-terminated source string.
+ * Return: A pointer to the destination buffer, now containing the concatenated result.
+ */
+
+char *_strcat(char *dest, const char *src)
 {
 	char *ptr = dest + strlen(dest);
 
@@ -49,7 +74,15 @@ char *strcat(char *dest, const char *src)
 }
 
 
-int strcmp(const char *str1, const char *str2)
+/**
+ * _strcmp - Compares two null-terminated strings lexicographically.
+ *
+ * @str1: Pointer to the first null-terminated string.
+ * @str2: Pointer to the second null-terminated string.
+ * Return: An integer
+ */
+
+int _strcmp(const char *str1, const char *str2)
 {
 	unsigned char char1, char2;
 
@@ -64,4 +97,67 @@ int strcmp(const char *str1, const char *str2)
 
 
 	return (char1 - char2);
+}
+
+/**
+ * _strdup - Duplicates a null terminated string.
+ *
+ * @str: Pointer to the null-terminated string to duplicate.
+ *
+ * Return: Pointer to the newly allocated memory containing the duplicated string
+ */
+char *_strdup(const char *str)
+{
+	size_t length, i;
+	char *duplicate;
+
+	if (str == NULL)
+		return (NULL);
+
+	length = 0;
+
+	while (str[length] != '\0')
+		length++;
+
+	duplicate = (char *)malloc((length + 1) * sizeof(char));
+
+
+	if (duplicate != NULL)
+	{
+		for (i = 0; i <= length; i++)
+			duplicate[i] = str[i];
+	}
+
+	return (duplicate);
+}
+
+/**
+ * _puts: outputs a null terminated string to the standard output
+ * 
+ * @str: pointer the the null terminated string to be printed 
+ * Return: the number of characters written
+ */
+
+int _puts(const char *str)
+{
+	int num_chars_written;
+
+	if (str == NULL)
+		return (EOF);
+
+	num_chars_written = 0;
+
+	while (*str != '\0')
+	{
+		putchar(*str);
+		str++;
+		num_chars_written++;
+	}
+
+	putchar('\n');
+
+	num_chars_written++;
+
+
+	return (num_chars_written);
 }
