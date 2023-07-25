@@ -1,6 +1,16 @@
 #include "shell.h"
 
-void execmd(char **tokens)
+
+/**
+ * execmd - function executes inputted cmd
+ *
+ * @tokens: pointers to an array of string that holds cmd emtered
+ *
+ * @env: pointer to an array of environments
+ *
+ * Return: function returns nothing
+ */
+void execmd(char **tokens, char **env)
 {
 	char *xact_cmd = find_path(tokens[0]);
 	pid_t pid;
@@ -8,6 +18,14 @@ void execmd(char **tokens)
 
 	if (tokens == NULL || tokens[0] == NULL)
 		return;
+	/* check if the entered command is exit */
+	if (strcmp(tokens[0], "exit") == 0)
+		exit_shell();
+	/* check if the entered command is env */
+	if (strcmp(tokens[0], "env") == 0)
+	{
+		print_env(env);
+	}
 	/* check if cmd exists */
 	if (xact_cmd == NULL)
 	{
@@ -33,5 +51,6 @@ void execmd(char **tokens)
 	{
 		wait(&status);
 	}
+	free(xact_cmd);
 }
 
