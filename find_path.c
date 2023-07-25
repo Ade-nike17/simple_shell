@@ -1,6 +1,13 @@
 #include "shell.h"
 
 
+/**
+ * find_path -function finds path and checks if it exists
+ *
+ * @cmd: the commamd of thr path to find
+ *
+ * Return: file_path or NULL if path does not exist
+ */
 
 char *find_path(char *cmd)
 {
@@ -10,6 +17,7 @@ char *find_path(char *cmd)
 	int token_length;
 	struct stat buffer;
 
+	/* access and store the var 'PATH' and its value */
 	path = getenv("PATH");
 	if (path)
 	{
@@ -23,13 +31,11 @@ char *find_path(char *cmd)
 			strcpy(file_path, path_token);
 			strcat(file_path, "/");
 			strcat(file_path, cmd);
-			strcat(file_path, "\0");
-
 			/* check if path exists */
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(path_cp);
-				return(file_path);
+				return (file_path);
 			}
 			else
 			{
