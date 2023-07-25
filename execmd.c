@@ -10,7 +10,7 @@
  *
  * Return: function returns nothing
  */
-void execmd(char **tokens, char **env)
+void execmd(char **tokens)
 {
 	char *xact_cmd = find_path(tokens[0]);
 	pid_t pid;
@@ -18,14 +18,7 @@ void execmd(char **tokens, char **env)
 
 	if (tokens == NULL || tokens[0] == NULL)
 		return;
-	/* check if the entered command is exit */
-	if (strcmp(tokens[0], "exit") == 0)
-		exit_shell();
-	/* check if the entered command is env */
-	if (strcmp(tokens[0], "env") == 0)
-	{
-		print_env(env);
-	}
+
 	/* check if cmd exists */
 	if (xact_cmd == NULL)
 	{

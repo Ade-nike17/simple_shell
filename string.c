@@ -59,7 +59,7 @@ char *_strcpy(char *dest, const char *src)
 
 char *_strcat(char *dest, const char *src)
 {
-	char *ptr = dest + strlen(dest);
+	char *ptr = dest + _strlen(dest);
 
 	while (*src != '\0')
 	{
@@ -149,12 +149,12 @@ int _puts(const char *str)
 
 	while (*str != '\0')
 	{
-		putchar(*str);
+		_putchar(*str);
 		str++;
 		num_chars_written++;
 	}
 
-	putchar('\n');
+	_putchar('\n');
 
 	num_chars_written++;
 

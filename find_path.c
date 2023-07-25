@@ -21,16 +21,16 @@ char *find_path(char *cmd)
 	path = getenv("PATH");
 	if (path)
 	{
-		path_cp = strdup(path);
-		cmd_length = strlen(cmd);
+		path_cp = _strdup(path);
+		cmd_length = _strlen(cmd);
 		path_token = strtok(path_cp, ":");
 		while (path_token != NULL)
 		{
-			token_length = strlen(path_token);
+			token_length = _strlen(path_token);
 			file_path = malloc(cmd_length + token_length + 2);
-			strcpy(file_path, path_token);
-			strcat(file_path, "/");
-			strcat(file_path, cmd);
+			_strcpy(file_path, path_token);
+			_strcat(file_path, "/");
+			_strcat(file_path, cmd);
 			/* check if path exists */
 			if (stat(file_path, &buffer) == 0)
 			{

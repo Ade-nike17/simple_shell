@@ -23,8 +23,32 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 			free_env(env_cp);
 			return (-1);
 		}
+		/* check if the entered command is exit */
+		if (_strcmp(tokens[0], "exit") == 0)
+		{
+			free_env(env_cp);
+			/* Free the allocated memory for tokens */
+			for (i = 0; tokens[i] != NULL; i++)
+			{
+				free(tokens[i]);
+			}
+			free(tokens);
+			exit(EXIT_SUCCESS);
+		}
+		/* check if the entered command is env */
+		if (_strcmp(tokens[0], "env") == 0)
+		{
+			print_env(env_cp);
+			/* Free the allocated memory for tokens */
+			for (i = 0; tokens[i] != NULL; i++)
+			{
+				free(tokens[i]);
+			}
+			free(tokens);
+			continue;
+		}
 
-		execmd(tokens, env_cp);
+		execmd(tokens);
 
 		/* Free the allocated memory for tokens */
 		for (i = 0; tokens[i] != NULL; i++)

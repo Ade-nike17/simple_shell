@@ -11,9 +11,16 @@ void print_str_list(char **str)
 {
 	while (*str)
 	{
-		puts(*str);
-		puts("\n");
+		_puts(*str);
+		_puts("\n");
 
 		str++;
 	}
+}
+
+
+
+int _putchar(char c)
+{
+	return(write(1, &c, 1));
 }

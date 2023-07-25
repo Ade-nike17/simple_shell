@@ -10,7 +10,7 @@ void print_env(char **env)
 {
 	while (*env)
 	{
-		puts(*env);
+		_puts(*env);
 		env++;
 	}
 }
@@ -41,7 +41,7 @@ char **dup_env()
 	env_ptr = environ; /* Reset env_ptr to the beginning of the environment */
 	for (i = 0; i < count; i++)
 	{
-		env_cp[i] = strdup(*env_ptr);
+		env_cp[i] = _strdup(*env_ptr);
 		env_ptr++;
 	}
 	/* null-terminate the array */

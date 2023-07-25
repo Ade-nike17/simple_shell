@@ -15,7 +15,7 @@ char **split_input_line(char *lineptr, const char *delim)
 	int i, num_token = 0;
 	char *token;
 	char **tokens;
-	char *lineptr_cp = strdup(lineptr);
+	char *lineptr_cp = _strdup(lineptr);
 
 	/* calculate the no of token */
 	token = strtok(lineptr_cp, delim);
@@ -31,7 +31,7 @@ char **split_input_line(char *lineptr, const char *delim)
 
 	for (i = 0; token != NULL; i++)
 	{
-		tokens[i] = strdup(token);
+		tokens[i] = _strdup(token);
 		token = strtok(NULL, delim);
 	}
 	tokens[i] = NULL;
