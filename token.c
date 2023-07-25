@@ -1,6 +1,15 @@
 #include "shell.h"
 
 
+/**
+ * split_input_line - function splits input cmd into tokens
+ *
+ * @lineptr: ptr holding an array of strings
+ * @delim: separators for the string
+ *
+ * Return: tokens
+ */
+
 char **split_input_line(char *lineptr, const char *delim)
 {
 	int i, num_token = 0;
@@ -33,7 +42,11 @@ char **split_input_line(char *lineptr, const char *delim)
 
 
 
-
+/**
+ * get_input_tokens - function takes in input cmd
+ *
+ * Return: tokens
+ */
 
 char **get_input_tokens()
 {
@@ -41,8 +54,9 @@ char **get_input_tokens()
 	size_t n = 0;
 	ssize_t line_read;
 	char **tokens;
+	char prompt[] = "$ ";
 
-	printf("$ ");
+	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 	line_read = getline(&lineptr, &n, stdin);
 	/*  condition for EOF or Ctrl + D */
 	if (line_read == -1)
