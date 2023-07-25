@@ -23,7 +23,7 @@ size_t _strlen(const char *str)
 
 
 /**
- * _strcpy - Copies a null-terminated string from the source to the destination.
+ * _strcpy - Copies a null-terminated string from the source to the dest
  *
  * @dest: Pointer to the destination buffer.
  * @src: Pointer to the null-terminated source string.
@@ -50,11 +50,11 @@ char *_strcpy(char *dest, const char *src)
 
 
 /**
- * _strcat - Concatenates a null-terminated string to the end of another string.
+ * _strcat - Concatenates a null-terminated string to the end
  *
  * @dest: Pointer to the destination buffer.
  * @src: Pointer to the null-terminated source string.
- * Return: A pointer to the destination buffer, now containing the concatenated result.
+ * Return: A pointer to the destination buffer, now containing result
  */
 
 char *_strcat(char *dest, const char *src)
@@ -104,7 +104,7 @@ int _strcmp(const char *str1, const char *str2)
  *
  * @str: Pointer to the null-terminated string to duplicate.
  *
- * Return: Pointer to the newly allocated memory containing the duplicated string
+ * Return: Pointer to the newly allocated memory containing the duplicate
  */
 char *_strdup(const char *str)
 {
@@ -131,33 +131,3 @@ char *_strdup(const char *str)
 	return (duplicate);
 }
 
-/**
- * _puts: outputs a null terminated string to the standard output
- * 
- * @str: pointer the the null terminated string to be printed 
- * Return: the number of characters written
- */
-
-int _puts(const char *str)
-{
-	int num_chars_written;
-
-	if (str == NULL)
-		return (EOF);
-
-	num_chars_written = 0;
-
-	while (*str != '\0')
-	{
-		_putchar(*str);
-		str++;
-		num_chars_written++;
-	}
-
-	_putchar('\n');
-
-	num_chars_written++;
-
-
-	return (num_chars_written);
-}
