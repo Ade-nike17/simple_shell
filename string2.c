@@ -19,7 +19,7 @@ void print_str_list(char **str)
 }
 
 /**
- * _puts: outputs a null terminated string to the standard output
+ * _puts - outputs a null terminated string to the standard output
  *
  * @str: pointer the the null terminated string to be printed
  * Return: the number of characters written
