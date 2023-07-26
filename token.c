@@ -54,9 +54,7 @@ char **get_input_tokens()
 	size_t n = 0;
 	ssize_t line_read;
 	char **tokens;
-	char prompt[] = "$ ";
 
-	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 	line_read = getline(&lineptr, &n, stdin);
 	/*  condition for EOF or Ctrl + D */
 	if (line_read == -1)

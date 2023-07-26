@@ -13,9 +13,11 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 	char **tokens;
 	int i;
 	char **env_cp = dup_env();
+	char prompt[] = "$ ";
 
 	while (1)
 	{
+		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 		tokens = get_input_tokens();
 		if (tokens == NULL)
 		{

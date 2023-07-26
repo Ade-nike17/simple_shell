@@ -6,8 +6,6 @@
  *
  * @tokens: pointers to an array of string that holds cmd emtered
  *
- * @env: pointer to an array of environments
- *
  * Return: function returns nothing
  */
 void execmd(char **tokens)
