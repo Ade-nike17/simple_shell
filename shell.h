@@ -28,6 +28,9 @@ int _strcmp(const char *str1, const char *str2);
 int _puts(const char *str);
 int _putchar(char c);
 char *_strdup(const char *str);
-
+int should_exit(const char *cmd);
+int is_env_cmd(const char *cmd);
+void handle_exit(char **tokens, char **env_cp);
+void handle_env(char **tokens, char **env_cp);
 
 #endif /* SHELL_H */
