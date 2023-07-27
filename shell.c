@@ -15,6 +15,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 	char **env_cp = dup_env();
 	char prompt[] = "$ ";
 
+	/*signal(SIGINT, get_sigint);*/
 	while (1)
 	{
 		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
@@ -45,7 +46,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 		free(tokens);
 
 	}
-	free_env(env_cp);
+	free(env_cp);
 	return (0);
 }
 
