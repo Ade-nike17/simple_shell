@@ -13,6 +13,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 	char **tokens;
 	int i;
 	char **env_cp = dup_env();
+	char **temp_env_cp = env_cp;
 	char prompt[] = "$ ";
 
 	/*signal(SIGINT, get_sigint);*/
@@ -23,7 +24,12 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 		if (tokens == NULL)
 		{
 			/* free env before exiting shell */
-			free_env(env_cp);
+			while (*temp_env_cp)
+			{
+				free(*temp_env_cp);
+				temp_env_cp++;
+			}
+			free(env_cp);
 			return (-1);
 		}
 		/* check if the entered command is exitor env */
@@ -46,7 +52,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 		free(tokens);
 
 	}
+	while (*env_cp)
+	{
+		free(*env_cp);
+		env_cp++;
+	}
 	free(env_cp);
+	
 	return (0);
 }
 

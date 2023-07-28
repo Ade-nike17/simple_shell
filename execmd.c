@@ -21,8 +21,10 @@ void execmd(char **tokens)
 	if (xact_cmd == NULL)
 	{
 		perror("Error");
+		free(xact_cmd);
 		return;
 	}
+
 	pid = fork();
 	if (pid == -1)
 	{
@@ -35,13 +37,12 @@ void execmd(char **tokens)
 		if (execve(xact_cmd, tokens, environ) == -1)
 		{
 			perror("execve");
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 	}
 	else
 	{
 		wait(&status);
 	}
-	free(xact_cmd);
 }
 

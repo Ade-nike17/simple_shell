@@ -43,7 +43,7 @@ char *find_path(char *cmd)
 				path_token = strtok(NULL, ":");
 			}
 		}
-		free(path_cp);
+		free(path_token);
 		/* check if the cmd itself is a file_path that exists */
 		if (stat(cmd, &buffer) == 0)
 			return (cmd);

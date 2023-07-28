@@ -120,9 +120,13 @@ char *_strdup(const char *str)
 		length++;
 
 	duplicate = (char *)malloc((length + 1) * sizeof(char));
+	if (duplicate == NULL)
+	{
+		free(duplicate);
+		return (NULL);
+	}
 
-
-	if (duplicate != NULL)
+	else if (duplicate != NULL)
 	{
 		for (i = 0; i <= length; i++)
 			duplicate[i] = str[i];

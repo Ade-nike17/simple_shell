@@ -46,6 +46,7 @@ char **dup_env()
 	}
 	/* null-terminate the array */
 	env_cp[count] = NULL;
+
 	return (env_cp);
 }
 
@@ -66,5 +67,4 @@ void free_env(char **environ)
 		free(*env_ptr);
 		env_ptr++;
 	}
-	free(environ);
 }
