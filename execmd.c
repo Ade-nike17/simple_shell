@@ -36,7 +36,7 @@ void execmd(char **tokens)
 		if (execve(xact_cmd, tokens, environ) == -1)
 		{
 			perror("execve");
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	else

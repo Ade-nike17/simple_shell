@@ -56,6 +56,7 @@ char **get_input_tokens()
 	char **tokens;
 
 	line_read = getline(&lineptr, &n, stdin);
+
 	/*  condition for EOF or Ctrl + D */
 	if (line_read != -1)
 	{

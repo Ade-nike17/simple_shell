@@ -17,7 +17,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 
 	while (loop)
 	{
-		write(STDOUT_FILENO, "$ ", 2); 
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 		tokens = get_input_tokens();
 		if (tokens == NULL)
 		{
