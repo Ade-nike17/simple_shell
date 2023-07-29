@@ -12,12 +12,11 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 {
 	char **tokens;
 	char **env_cp = dup_env();
-	char prompt[] = "$ ";
 	int i;
 
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+		write(STDOUT_FILENO, "$ ", 3);
 		tokens = get_input_tokens();
 		if (tokens == NULL)
 		{
