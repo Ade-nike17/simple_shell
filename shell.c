@@ -35,7 +35,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 				handle_env(tokens, env_cp);
 				continue;
 			}
-			execmd(tokens);
+			/* Remove the prompt before executing the command */
+			if (fork() == 0)
+			{
+				execmd(tokens);
+				exit(EXIT_SUCCESS);
+			}
+			wait(NULL);
 		}
 		/* Free the allocated memory for token */
 		for (i = 0; tokens[i] != NULL; i++)
