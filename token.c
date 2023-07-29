@@ -57,19 +57,19 @@ char **get_input_tokens()
 
 	line_read = getline(&lineptr, &n, stdin);
 	/*  condition for EOF or Ctrl + D */
-	if (line_read == -1)
+	if (line_read != -1)
+	{
+		/* remove new line at the end */
+		lineptr[line_read - 1] = '\0';
+
+		/* split the input line into tokens*/
+		tokens = split_input_line(lineptr, " ");
+		free(lineptr);
+	}
+	else
 	{
 		free(lineptr);
 		return (NULL);
 	}
-
-	/* remove new line at the end */
-	lineptr[line_read - 1] = '\0';
-
-	/* split the input line into tokens*/
-	tokens = split_input_line(lineptr, " ");
-	free(lineptr);
-
 	return (tokens);
 }
-

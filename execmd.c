@@ -21,7 +21,6 @@ void execmd(char **tokens)
 	if (xact_cmd == NULL)
 	{
 		perror("Error");
-		free(xact_cmd);
 		return;
 	}
 
@@ -44,5 +43,6 @@ void execmd(char **tokens)
 	{
 		wait(&status);
 	}
+	xact_cmd = NULL;
 }
 

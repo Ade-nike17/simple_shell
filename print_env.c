@@ -45,7 +45,7 @@ char **dup_env()
 		env_ptr++;
 	}
 	/* null-terminate the array */
-	env_cp[count] = NULL;
+	env_cp[i] = '\0';
 
 	return (env_cp);
 }
@@ -54,17 +54,18 @@ char **dup_env()
 /**
  * free_env - function frees allocated mem of env
  *
- * @environ: ptr to array of environs
- * retuen: nothing
+ * @env_cp: ptr to array of environs
+ * return: nothing
  */
 
-void free_env(char **environ)
+void free_env(char **env_cp)
 {
-	char **env_ptr = environ;
+	char **env_ptr = env_cp;
 
-	while (*env_ptr)
+	while (*env_ptr != NULL)
 	{
 		free(*env_ptr);
 		env_ptr++;
 	}
+	free(env_cp);
 }

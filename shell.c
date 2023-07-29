@@ -11,54 +11,39 @@
 int main(__attribute__((unused)) int argc, __attribute__((unused))char **argv)
 {
 	char **tokens;
-	int i;
 	char **env_cp = dup_env();
-	char **temp_env_cp = env_cp;
 	char prompt[] = "$ ";
+	int i;
 
-	/*signal(SIGINT, get_sigint);*/
 	while (1)
 	{
 		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 		tokens = get_input_tokens();
 		if (tokens == NULL)
 		{
-			/* free env before exiting shell */
-			while (*temp_env_cp)
-			{
-				free(*temp_env_cp);
-				temp_env_cp++;
-			}
-			free(env_cp);
-			return (-1);
+			break;
 		}
 		/* check if the entered command is exitor env */
-		if (should_exit(tokens[0]))
+		if (tokens != NULL)
 		{
-			handle_exit(tokens, env_cp);
+			if (should_exit(tokens[0]))
+			{
+				handle_exit(tokens, env_cp);
+			}
+			if (is_env_cmd(tokens[0]))
+			{
+				handle_env(tokens, env_cp);
+				continue;
+			}
+			execmd(tokens);
 		}
-		else if (is_env_cmd(tokens[0]))
-		{
-			handle_env(tokens, env_cp);
-			continue;
-		}
-		execmd(tokens);
-
-		/* Free the allocated memory for tokens */
+		/* Free the allocated memory for token */
 		for (i = 0; tokens[i] != NULL; i++)
 		{
 			free(tokens[i]);
 		}
 		free(tokens);
-
 	}
-	while (*env_cp)
-	{
-		free(*env_cp);
-		env_cp++;
-	}
-	free(env_cp);
-	
+	free_env(env_cp);
 	return (0);
 }
-
