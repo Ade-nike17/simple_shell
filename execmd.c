@@ -42,7 +42,8 @@ void execmd(char **tokens)
 	else
 	{
 		wait(&status);
+		free(xact_cmd);
+		xact_cmd = NULL;
 	}
-	xact_cmd = NULL;
 }
 
